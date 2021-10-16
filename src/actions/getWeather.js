@@ -15,6 +15,6 @@ export const getWeather = (city, country) => async (dispatch) => {
 export const  deleteCity = (id) => (dispatch) => {
     dispatch({
         type: "DELETE_CITY",
-        payload: id
+        payload: id,
     })
 }

@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import CityCard from "../Card/CityCard";
 import { getWeather } from "../../actions/getWeather";
 
-
 import "./home.css"
 import "../About/about.css"
 import "../../App.css";
@@ -12,12 +11,8 @@ import { Link } from "react-router-dom";
 
 
 function Home() {
-    //set city
     const [city, setCity] = useState("");
-
     const weatherSelector = useSelector((state) => state.WeatherInfo);
-    console.log(weatherSelector);
-    // console.log(weatherSelector.weatherinfolist);
     const dispatch = useDispatch();
     const getWeatherInfoAction = (city) => dispatch(getWeather(city));
 
@@ -51,15 +46,16 @@ function Home() {
                             onChange={(e) => setCity(e.target.value)}
                         />
                     </div>
-                    <button type="submit" onClick={getWeatherInfo}>
+                    <button className="add" type="submit" onClick={getWeatherInfo}>
                         Add
                     </button>
+                        
                 </form>
                 <div className="cards">
                     {weatherSelector.weatherinfolist.map((city) => (
                         <CityCard key={city.id} {...city} />
                     ))}
-                </div>
+                </div> 
                 <ul className="pages">
                     <Link to="/" style={{ textDecoration: 'none' , color: 'black'}}>
                     <li>Home</li>

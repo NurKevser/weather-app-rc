@@ -1,6 +1,7 @@
 import { GET_WEATHER, GET_WEATHER_DATA_ERROR,
     DELETE_CITY, } from "../types/types";
 
+
 const INITIAL_STATE =  {
     counter: 0,
     weatherinfolist: [],

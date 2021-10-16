@@ -9,15 +9,11 @@ import "./card.css";
 
 const CityCard = (city) => {
     const iconId = city.weatherDetails.weather[0]?.icon;
-    console.log("iconid :",iconId);
-    
     const dispatch = useDispatch();
 
     const handleDelete = () => {
         dispatch(deleteCity(city.id));
       };
-
-
 
     let details = "";
     if (city.weatherDetails && city.weatherDetails.hasOwnProperty("coord")) {
@@ -42,7 +38,7 @@ const CityCard = (city) => {
     } else {
         details = (
             <p>You need to type a city or the city you typed doesn't exist</p>
-        );
+        );     
     }
 
     return <div>{details}</div>;
