@@ -16,6 +16,8 @@ const weatherIcons ={
         "02n": <i className="wi wi-day-fog"></i>,
         "03n": <i className="wi wi-day-fog"></i>,
         "03d": <i className="wi wi-day-fog"></i>,
+        "04d": <i className="wi wi-day-cloudy"></i>,
+        "04n": <i className="wi wi-night-cloudy"></i>,
 
     
 }

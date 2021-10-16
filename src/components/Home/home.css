@@ -1,0 +1,46 @@
+.App{
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    width: 100%;   
+}
+form{
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+}
+
+.control{
+    width: 600px;
+    height: 40px;
+}
+input{
+    width: 90%;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color:white;
+    border-radius: 7px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+button{
+    width: 55px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+.cards{
+    width: 70%;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+

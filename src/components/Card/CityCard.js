@@ -1,8 +1,11 @@
-import { deleteCity } from "../actions/getWeather"; 
+import { deleteCity } from "../../actions/getWeather"; 
 import { useDispatch } from "react-redux";
 
+// https://github.com/erikflowers/weather-icons.git
 import "weather-icons/css/weather-icons.css";
-import weatherIcons from "./Icons";
+import weatherIcons from "../Icons";
+import "./card.css";
+
 
 const CityCard = (city) => {
     const iconId = city.weatherDetails.weather[0]?.icon;
@@ -34,6 +37,7 @@ const CityCard = (city) => {
                 <i className="far fa-trash-alt" onClick={() => handleDelete(city.id)}></i>
                 
             </div>
+            
         );
     } else {
         details = (

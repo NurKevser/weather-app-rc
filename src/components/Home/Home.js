@@ -1,12 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import CityCard from "../components/CityCard";
-import { getWeather } from "../actions/getWeather";
+import CityCard from "../Card/CityCard";
+import { getWeather } from "../../actions/getWeather";
 
 
-import "../App.css";
+import "./home.css"
+import "../About/about.css"
+import "../../App.css";
 import { Link } from "react-router-dom";
+
 
 function Home() {
     //set city
@@ -27,6 +30,7 @@ function Home() {
         if (city !== "") {
             getWeatherInfoAction(city);
         }
+        setCity("");
     };
 
     return (
@@ -43,7 +47,7 @@ function Home() {
                         <input
                             type="text"
                             name="name"
-                            placeholder="City to check weather, Ex. Paris"
+                            placeholder="City to check weather, Ex. Antalya"
                             onChange={(e) => setCity(e.target.value)}
                         />
                     </div>
@@ -51,16 +55,16 @@ function Home() {
                         Add
                     </button>
                 </form>
-                <div>
+                <div className="cards">
                     {weatherSelector.weatherinfolist.map((city) => (
                         <CityCard key={city.id} {...city} />
                     ))}
                 </div>
                 <ul className="pages">
-                    <Link to="/">
+                    <Link to="/" style={{ textDecoration: 'none' , color: 'black'}}>
                     <li>Home</li>
                     </Link>
-                    <Link to="/about">
+                    <Link to="/about" style={{ textDecoration: 'none' , color: 'black'}}>
                     <li>About</li>                    
                     </Link>
                 </ul>
