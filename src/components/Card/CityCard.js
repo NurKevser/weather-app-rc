@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 // https://github.com/erikflowers/weather-icons.git
 import "weather-icons/css/weather-icons.css";
-import weatherIcons from "../Icons";
+import weatherIcons  from "../Icons";
 import "./card.css";
 
 

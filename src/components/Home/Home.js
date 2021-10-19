@@ -21,17 +21,12 @@ function Home() {
     const getWeatherInfoAction = (city) => dispatch(getWeather(city));
 
     useEffect(() => {
-       
-        getWeatherInfoAction();
            const refreshTimer = setInterval(() => { 
                 setTimer(timer + 1 ) 
             }, 1000);
-        
-        
-        return () => clearInterval(refreshTimer); 
-    
 
-        
+        return () => clearInterval(refreshTimer); 
+     
     },[timer]);
 
     const getWeatherInfo = (e) => {
@@ -91,7 +86,7 @@ function Home() {
                 </form>
                 <div className="control2">
                 <button className="refresh" onClick={handleRefresh}>Refresh</button>
-                <input className="searchbox" type="text" placeholder="Search..." onChange={handleSearch} />
+                <input className="searchbox" type="text" placeholder="fulltext search by name" onChange={handleSearch} />
         
                 </div>
 
