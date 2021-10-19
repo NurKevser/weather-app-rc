@@ -13,20 +13,26 @@ import { Link } from "react-router-dom";
 function Home() {
     const [city, setCity] = useState("");
     const [filterCities, setfilterCities] = useState([]);
+    const [timer, setTimer] = useState(0);
     const weatherSelector = useSelector((state) => state.WeatherInfo);
-    console.log(weatherSelector.cities);
-    console.log(weatherSelector);
+
     const cities = weatherSelector.cities;
     const dispatch = useDispatch();
     const getWeatherInfoAction = (city) => dispatch(getWeather(city));
 
-
     useEffect(() => {
-        getWeatherInfoAction("antalya");
-        getWeatherInfoAction("istanbul");
-        getWeatherInfoAction("ankara");
-        getWeatherInfoAction("albeni");
-    },[]);
+       
+        getWeatherInfoAction();
+           const refreshTimer = setInterval(() => { 
+                setTimer(timer + 1 ) 
+            }, 1000);
+        
+        
+        return () => clearInterval(refreshTimer); 
+    
+
+        
+    },[timer]);
 
     const getWeatherInfo = (e) => {
         e.preventDefault();
@@ -47,14 +53,16 @@ function Home() {
     };
 
     const handleRefresh = () => {
-        
-       cities.map(val => 
-             (
-                dispatch(deleteCity(val)),
-                getWeatherInfoAction(val)
-        )
-        )
-        dispatch(updateCities(cities))
+        if(timer >= 15){
+            cities.map(val => 
+                    (
+                       dispatch(deleteCity(val)),
+                       getWeatherInfoAction(val)
+               )
+               )
+               dispatch(updateCities(cities))
+               setTimer(0)
+        }
     }
 
 
