@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CityCard from "../Card/CityCard";
-import { getWeather } from "../../actions/getWeather";
+import { deleteCity, getWeather, updateCities } from "../../actions/getWeather";
 
 import "./home.css"
 import "../About/about.css"
@@ -12,12 +12,20 @@ import { Link } from "react-router-dom";
 
 function Home() {
     const [city, setCity] = useState("");
+    const [filterCities, setfilterCities] = useState([]);
     const weatherSelector = useSelector((state) => state.WeatherInfo);
+    console.log(weatherSelector.cities);
+    console.log(weatherSelector);
+    const cities = weatherSelector.cities;
     const dispatch = useDispatch();
     const getWeatherInfoAction = (city) => dispatch(getWeather(city));
 
+
     useEffect(() => {
         getWeatherInfoAction("antalya");
+        getWeatherInfoAction("istanbul");
+        getWeatherInfoAction("ankara");
+        getWeatherInfoAction("albeni");
     },[]);
 
     const getWeatherInfo = (e) => {
@@ -27,6 +35,29 @@ function Home() {
         }
         setCity("");
     };
+
+    const handleSearch = (e) => {   
+            setCity(e.target.value)
+            if (e.target.value){
+                const newList = weatherSelector.weatherinfolist.filter(item => item.weatherDetails.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase()))
+                setfilterCities(newList)        
+            }else{
+                setfilterCities(weatherSelector.weatherinfolist)
+            }    
+    };
+
+    const handleRefresh = () => {
+        
+       cities.map(val => 
+             (
+                dispatch(deleteCity(val)),
+                getWeatherInfoAction(val)
+        )
+        )
+        dispatch(updateCities(cities))
+    }
+
+
 
     return (
         <React.Fragment>
@@ -49,13 +80,23 @@ function Home() {
                     <button className="add" type="submit" onClick={getWeatherInfo}>
                         Add
                     </button>
-                        
                 </form>
-                <div className="cards">
-                    {weatherSelector.weatherinfolist.map((city) => (
-                        <CityCard key={city.id} {...city} />
+                <div className="control2">
+                <button className="refresh" onClick={handleRefresh}>Refresh</button>
+                <input className="searchbox" type="text" placeholder="Search..." onChange={handleSearch} />
+        
+                </div>
+
+                {city ? ( <div className="cards">
+                    {filterCities.map((city) => (
+                        <CityCard key={city.weatherDetails.name} {...city} />
                     ))}
-                </div> 
+                </div>) : ( <div className="cards">
+                    {weatherSelector.weatherinfolist.map((city) => (
+                        <CityCard key={city.weatherDetails.name} {...city} />
+                    ))}
+                </div>)}
+               
                 <ul className="pages">
                     <Link to="/" style={{ textDecoration: 'none' , color: 'black'}}>
                     <li>Home</li>

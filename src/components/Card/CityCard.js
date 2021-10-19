@@ -12,7 +12,7 @@ const CityCard = (city) => {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
-        dispatch(deleteCity(city.id));
+        dispatch(deleteCity(city.weatherDetails.name));
       };
 
     let details = "";
@@ -30,7 +30,7 @@ const CityCard = (city) => {
                 </p>
                 <p>{city.weatherDetails.weather[0]?.description}</p>
                 
-                <i className="far fa-trash-alt" onClick={() => handleDelete(city.id)}></i>
+                <i className="far fa-trash-alt" onClick={() => handleDelete(city.weatherDetails.name)}></i>
                 
             </div>
             

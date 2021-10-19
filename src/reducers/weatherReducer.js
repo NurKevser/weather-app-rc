@@ -1,10 +1,12 @@
 import { GET_WEATHER, GET_WEATHER_DATA_ERROR,
-    DELETE_CITY, } from "../types/types";
+    DELETE_CITY, UPDATE_WEATHER } from "../types/types";
 
 
 const INITIAL_STATE =  {
     counter: 0,
     weatherinfolist: [],
+    getweatherError: '',
+    cities: [],
 };
 
 const weatherInfo = ( state = INITIAL_STATE, action,
@@ -20,20 +22,34 @@ const weatherInfo = ( state = INITIAL_STATE, action,
                     id: state.counter + 1,
                     weatherDetails: action.payload,
                     message: ''
-                },
+                }
             ],
+            cities: [ 
+                ...state.cities,
+                action.payload.name
+            ]
         };
+
 
         case GET_WEATHER_DATA_ERROR:
             return {
                 ...state, message: action.payload 
             };
 
+        case UPDATE_WEATHER:
+
+            return {
+                ...state,
+                 cities: [action.payload],                 
+                };
+            
+            
+
         case DELETE_CITY:
             
             return {
                 ...state,
-                weatherinfolist: state.weatherinfolist.filter((item) => item.id !== action.payload),
+                weatherinfolist: state.weatherinfolist.filter((item) => item.weatherDetails.name !== action.payload),
             };
             
             default:
