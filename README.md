@@ -24,6 +24,5 @@ Get started documentation is at https://openweathermap.org/appid and we will be 
 
 ## Preview
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/81585625/138088852-b168bae8-611e-4a26-9786-bb6af5eb7763.gif"
- width="360" height="574" />
+  <img src="https://user-images.githubusercontent.com/81585625/138088852-b168bae8-611e-4a26-9786-bb6af5eb7763.gif"/>
 </p>
