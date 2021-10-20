@@ -15,11 +15,11 @@ Get started documentation is at https://openweathermap.org/appid and we will be 
 
 ##Build and Start
 
--`yarn add redux react-redux redux-thunk`
--`yarn add react-router-dom`
--`yarn add axios`
--`git clone "https://github.com/erikflowers/weather-icons.git", //for weather icons
-`
--yarn start
+- `yarn add redux react-redux redux-thunk`.
+- `yarn add react-router-dom`.
+- `yarn add axios`.
+- `git clone "https://github.com/erikflowers/weather-icons.git", //for weather icons`.
+- yarn start
+
 
 ##Preview
