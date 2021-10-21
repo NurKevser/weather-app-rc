@@ -52,7 +52,7 @@ function Home() {
     };
 
     const handleRefresh = () => {
-        if(timer >= 15){
+        if(timer >= 5){
             cities.map(val => 
                     (
                        dispatch(deleteCity(val)),

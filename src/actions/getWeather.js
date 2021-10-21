@@ -7,7 +7,7 @@ export const getWeather = (city, country) => async (dispatch) => {
     .then(res => {
        dispatch({ type: 'GET_WEATHER', payload: res.data })
     })
-    .catch(error => dispatch({ type: "GET_WEATHER_DATA_ERROR", payload: "loading error!"}));
+    .catch(error => dispatch({ type: "GET_WEATHER_DATA_ERROR", payload: "loading error!"}, alert("Please write a valid city name")));
     
 };
 
