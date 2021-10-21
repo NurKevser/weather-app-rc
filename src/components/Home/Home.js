@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
     const [city, setCity] = useState("");
+    const [searchInput, setSearhInput] = useState("");
     const [filterCities, setfilterCities] = useState([]);
     const [timer, setTimer] = useState(0);
     const weatherSelector = useSelector((state) => state.WeatherInfo);
@@ -32,15 +33,18 @@ function Home() {
     const getWeatherInfo = (e) => {
         e.preventDefault();
         if (city !== "") {
-            getWeatherInfoAction(city);
+            const x = weatherSelector?.weatherinfolist?.filter(el => {return city.toLowerCase() === el.weatherDetails.name.toLowerCase()})
+            if(x.length === 0) {
+                getWeatherInfoAction(city);
+            }   
         }
         setCity("");
     };
 
     const handleSearch = (e) => {   
-            setCity(e.target.value)
+            setSearhInput(e.target.value);
             if (e.target.value){
-                const newList = weatherSelector.weatherinfolist.filter(item => item.weatherDetails.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase()))
+                const newList = weatherSelector.weatherinfolist.filter(item => item.weatherDetails.name.toLowerCase().includes(e.target.value.toLowerCase()))
                 setfilterCities(newList)        
             }else{
                 setfilterCities(weatherSelector.weatherinfolist)
@@ -78,6 +82,7 @@ function Home() {
                             name="name"
                             placeholder="City to check weather, Ex. Antalya"
                             onChange={(e) => setCity(e.target.value)}
+                            value={city}
                         />
                     </div>
                     <button className="add" type="submit" onClick={getWeatherInfo}>
@@ -86,17 +91,22 @@ function Home() {
                 </form>
                 <div className="control2">
                 <button className="refresh" onClick={handleRefresh}>Refresh</button>
-                <input className="searchbox" type="text" placeholder="fulltext search by name" onChange={handleSearch} />
+                <input 
+                    className="searchbox" 
+                    type="text" 
+                    placeholder="fulltext search by name" 
+                    onChange={(e) => handleSearch(e)} 
+                />
         
                 </div>
 
-                {city ? ( <div className="cards">
-                    {filterCities.map((city) => (
-                        <CityCard key={city.weatherDetails.name} {...city} />
+                {searchInput ? ( <div className="cards">
+                    {filterCities?.map((city) => (
+                        <CityCard key={city.id} {...city} />
                     ))}
                 </div>) : ( <div className="cards">
-                    {weatherSelector.weatherinfolist.map((city) => (
-                        <CityCard key={city.weatherDetails.name} {...city} />
+                    {weatherSelector?.weatherinfolist?.map((city) => (
+                        <CityCard key={city.id} {...city} />
                     ))}
                 </div>)}
                

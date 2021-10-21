@@ -12,10 +12,10 @@ export const getWeather = (city, country) => async (dispatch) => {
 };
 
 
-export const deleteCity = (name) => (dispatch) => {
+export const deleteCity = (id) => (dispatch) => {
     dispatch({
         type: "DELETE_CITY",
-        payload: name, 
+        payload: id, 
     })
 };
 
