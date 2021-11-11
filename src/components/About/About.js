@@ -7,10 +7,10 @@ const About = () => {
     <div className="about">
        <h2>Weather App Demonstration</h2>
       <ul className="pages">
-        <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to="/" style={{ textDecoration: 'none', color: '#F2B138' }}>
           <li>Home</li>
         </Link>
-        <Link to="/about" style={{ textDecoration: 'none',color: 'black' }}>
+        <Link to="/about" style={{ textDecoration: 'none',color: '#F2B138' }}>
           <li>About</li>
         </Link>
       </ul>

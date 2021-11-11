@@ -40,7 +40,7 @@ const weatherInfo = ( state = INITIAL_STATE, action,
 
             return {
                 ...state,
-                 cities: [action.payload],                 
+                cities: [action.payload],               
                 };
             
             

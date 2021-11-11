@@ -32,7 +32,8 @@ input{
     border-radius: 8px;
     border: none;
     outline: none;
-    background-color: #fff;
+    background-color: #F2B138;
+    color: #0a5275;
     border-radius: 7px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
 }
@@ -52,7 +53,8 @@ input{
     border-radius: 8px;
     border: none;
     outline: none;
-    background-color: #fff;
+    background-color: #F2B138;
+    color: #0a5275;
     border-radius: 7px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
 }
