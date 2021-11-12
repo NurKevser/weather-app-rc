@@ -33,7 +33,7 @@ function Home() {
     const getWeatherInfo = (e) => {
         e.preventDefault();
         if (city !== "") {
-            const x = weatherSelector?.weatherinfolist?.filter(el => {return city.toLowerCase() === el.weatherDetails.name.toLowerCase()})
+            const x = weatherSelector?.weatherinfolist?.filter(el => {return city.toLocaleLowerCase() === el.weatherDetails.name.toLowerCase()})
             if(x.length === 0) {
                 getWeatherInfoAction(city);
             }   

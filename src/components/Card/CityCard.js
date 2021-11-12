@@ -25,9 +25,9 @@ const CityCard = (city) => {
                     <span>{city.weatherDetails?.sys.country}</span>
                 </p>
                 <weatherIcons>{weatherIcons[iconId]}</weatherIcons>
-                <p>
+                <h2>
                     {Math.floor(city.weatherDetails.main?.temp - 273.15)}&deg;
-                </p>
+                </h2>
                 <p>{city.weatherDetails.weather[0]?.description}</p>
                 
                 <i className="far fa-trash-alt" onClick={() => handleDelete(city.weatherDetails.name)}></i>
